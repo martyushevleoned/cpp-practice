@@ -1,0 +1,21 @@
+# namespace
+NamespaceIndentation: None
+
+# скобки
+BreakBeforeBraces: Allman
+AllowShortFunctionsOnASingleLine: None
+
+# ссылки / указатели
+PointerAlignment: Left
+ReferenceAlignment: Left
+
+# отступы
+AccessModifierOffset: -4
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never
+AlwaysBreakTemplateDeclarations: Yes
+
+# строки
+ColumnLimit: 100
+EmptyLineBeforeAccessModifier: Never

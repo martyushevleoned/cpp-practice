@@ -1,6 +1,5 @@
-#include "src/singleton.hpp"
+#include "singleton.hpp"
 #include <gtest/gtest.h>
-#include <string>
 
 struct TestClass
 {
@@ -37,7 +36,7 @@ TEST(StaticSingleton, mutipleSingleton)
     EXPECT_EQ(100, (singleton::StaticSingleton<TestClass, 1>::get().value));
     EXPECT_EQ(200, (singleton::StaticSingleton<TestClass, 2>::get().value));
     EXPECT_EQ(300, (singleton::StaticSingleton<TestClass, 3>::get().value));
-    
+
     singleton::StaticSingleton<TestClass, 2>::reset();
     singleton::StaticSingleton<TestClass, 3>::reset();
     EXPECT_EQ(100, (singleton::StaticSingleton<TestClass, 1>::get().value));

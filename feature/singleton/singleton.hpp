@@ -1,3 +1,6 @@
+#ifndef SINGLETON_HPP
+#define SINGLETON_HPP
+
 #include <memory>
 
 namespace singleton
@@ -22,31 +25,33 @@ class StaticSingleton : private SingletonBase
 public:
     static T& get(T* t = new T())
     {
-        if (!instance())
+        if (!instance)
         {
-            instance().reset(t);
+            instance.reset(t);
         }
-        return *instance().get();
+        return *instance.get();
     }
     template <typename... Args>
     static T& get(Args&&... args)
     {
-        if (!instance())
+        if (!instance)
         {
-            instance().reset(new T(std::forward<Args>(args)...));
+            instance.reset(new T(std::forward<Args>(args)...));
         }
-        return *instance().get();
+        return *instance.get();
     }
     static void reset()
     {
-        instance().reset();
+        instance.reset();
     }
 private:
-    static std::unique_ptr<T>& instance()
-    {
-        static std::unique_ptr<T> instance;
-        return instance;
-    }
+    static std::unique_ptr<T> instance;
 };
 
+// static
+template <typename T, size_t ID>
+std::unique_ptr<T> StaticSingleton<T, ID>::instance{};
+
 } // namespace singleton
+
+#endif

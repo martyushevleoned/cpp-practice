@@ -46,3 +46,7 @@ add_unit_test(
     cleaner_test
     SRC cleaner/cleaner_test.cpp
 )
+add_unit_test(
+    secure_string_test
+    SRC secure/secure_string_test.cpp
+)

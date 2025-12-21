@@ -33,4 +33,17 @@ test()
     ctest --test-dir build/projects --output-on-failure
 }
 
+dev-container()
+{
+    docker build -t dev-container -f ./utils/Dockerfile .
+    docker run \
+        -u $(id -u):$(id -g) \
+        -v $(pwd):/cpp-practice \
+        -v $(pwd)/utils/bash_aliases:/root/.bash_aliases:ro \
+        -v /etc/passwd:/etc/passwd:ro \
+        -v /etc/group:/etc/group:ro \
+        --hostname container \
+        -it --rm dev-container
+}
+
 $@

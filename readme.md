@@ -2,9 +2,17 @@
 
 ## dev
 ```shell
-./utils/bash_utils clean
-./utils/bash_utils build
-./utils/bash_utils test
+utils/bash_aliases clean
+utils/bash_aliases build
+utils/bash_aliases test
+```
+
+## dev container
+```shell
+utils/bash_aliases dev-container
+clean
+build
+test
 ```
 
 ## todo

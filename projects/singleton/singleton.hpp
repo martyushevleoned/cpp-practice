@@ -1,9 +1,9 @@
 #ifndef SINGLETON_HPP
 #define SINGLETON_HPP
 
+#include <boost/noncopyable.hpp>
 #include <memory>
 #include <stdexcept>
-#include <boost/noncopyable.hpp>
 
 namespace singleton
 {

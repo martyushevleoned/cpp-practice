@@ -41,9 +41,9 @@ endfunction(add_unit_test)
 
 # Targets
 add_unit_test(
-    singleton_test
-    SRC singleton/singleton_test.cpp
-    LIB GTest::gtest_main Boost::boost
+    universal_cast_test
+    SRC cast/universal_cast_test.cpp
+    LIB GTest::gtest_main
 )
 add_unit_test(
     cleaner_test
@@ -51,12 +51,17 @@ add_unit_test(
     LIB GTest::gtest_main
 )
 add_unit_test(
+    hash_stream_test
+    SRC hash/hash_stream_test.cpp
+    LIB GTest::gtest_main openssl::openssl
+)
+add_unit_test(
     secure_string_test
     SRC secure/secure_string_test.cpp
     LIB GTest::gtest_main
 )
 add_unit_test(
-    hash_stream_test
-    SRC hash/hash_stream_test.cpp
-    LIB GTest::gtest_main openssl::openssl
+    singleton_test
+    SRC singleton/singleton_test.cpp
+    LIB GTest::gtest_main Boost::boost
 )

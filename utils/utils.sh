@@ -1,13 +1,17 @@
 format()
 {
     # apt install clang-format
+	# TODO format --fast -> `clang-format ${files from git status}`
     find . -type f -regex ".*\.\(c\|h\|cpp\|hpp\)$" -exec clang-format -i {} \;
 }
 
 clean()
 {
-    git clean -ffdx .
-    git reset --hard
+	case "$1" in
+		'') rm -r build ;;
+		--force | -f) git clean -ffdx . && git reset --hard ;; 
+		*) echo "unexpected option $@" ;;
+	esac
 }
 
 conan()
@@ -39,11 +43,9 @@ dev-container()
     docker run \
         -u $(id -u):$(id -g) \
         -v $(pwd):/cpp-practice \
-        -v $(pwd)/utils/bash_aliases:/root/.bash_aliases:ro \
-        -v /etc/passwd:/etc/passwd:ro \
-        -v /etc/group:/etc/group:ro \
         --hostname container \
         -it --rm dev-container
+	# TODO source utils/utils.sh
 }
 
 $@

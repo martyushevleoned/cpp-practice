@@ -8,4 +8,4 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 # Project
 include(${CMAKE_BINARY_DIR}/conan_toolchain.cmake)
-add_subdirectory(projects)
+add_subdirectory(feature)

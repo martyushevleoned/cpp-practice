@@ -15,6 +15,12 @@ endfunction(add_unit_test)
 
 # Targets
 add_unit_test(
+    collection_test
+    SRC collection/builder_test.cpp
+    LIB GTest::gtest_main Boost::boost
+)
+
+add_unit_test(
     universal_cast_test
     SRC cast/universal_cast_test.cpp
     LIB GTest::gtest_main

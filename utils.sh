@@ -10,7 +10,7 @@ build()
 {
     conan install . --build=missing --output-folder=$BUILD_DIR --settings=build_type=$BUILD_TYPE
     cmake -B $BUILD_DIR -DCMAKE_BUILD_TYPE=$BUILD_TYPE
-    make -C $BUILD_DIR -j$(nproc)
+    cmake --build $BUILD_DIR -j $(nproc)
 }
 
 test()
@@ -22,7 +22,7 @@ container()
 {
 	local image_name='dev'
 	local home_dir='/home/ubuntu'
-    [ -z "docker images -q $image_name:latest" ] && docker build -t $image_name -f ./Dockerfile .
+    [ -z "$(docker images -q $image_name:latest)" ] && docker build -t $image_name .
     docker run \
         -u $(id -u):$(id -g) \
 		-v ~/.conan2:$home_dir/.conan2 \

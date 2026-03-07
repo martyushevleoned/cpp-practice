@@ -6,6 +6,7 @@ RUN apt update && apt install -y \
 	build-essential \
 	clang-format \
     cmake \
+    gdb \
     git \
 	python3-venv \
     vim
